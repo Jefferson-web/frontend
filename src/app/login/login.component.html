@@ -1,0 +1,87 @@
+<main class="d-flex w-100 animate__fadeIn">
+  <div class="container d-flex flex-column">
+    <div class="row vh-100">
+      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+        <div class="d-table-cell align-middle">
+          <div class="text-center mt-4">
+            <h1 class="h2">Bienvenido</h1>
+            <p class="lead">Inicia sesión en tu cuenta para continuar</p>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="m-sm-4">
+                <app-alert></app-alert>
+                <form #loginForm="ngForm" (submit)="login(loginForm);">
+                  <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input
+                      class="form-control form-control-lg"
+                      [ngClass]="{'is-invalid': email.invalid && email.touched}"
+                      ngModel
+                      type="email"
+                      name="email"
+                      placeholder="Ingresa tu email"
+                      required
+                      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      #email="ngModel"
+                      autocomplete="none"
+                      />
+                      <div *ngIf="email.invalid && email.touched">
+                        <div *ngIf="email.errors?.required" class="error-message">El email es necesario</div>
+                        <div *ngIf="email.errors?.pattern" class="error-message">Ingrese un email válido</div>
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input
+                      class="form-control form-control-lg"
+                      [ngClass]="{'is-invalid': password.invalid && password.touched}"
+                      ngModel
+                      type="password"
+                      name="password"
+                      placeholder="Ingresa tu contraseña"
+                      required
+                      #password="ngModel"
+                      autocomplete="none"
+                    />
+                    <div *ngIf="password.invalid && password.touched">
+                      <div *ngIf="password.errors?.required" class="error-message">La contraseña es necesaria</div>
+                    </div>
+                    <small>
+                      <a href="pages-reset-password.html">Olvidaste tu contraseña?</a>
+                    </small>
+                  </div>
+                  <div>
+                    <label class="form-check">
+                      <input
+                        class="form-check-input"
+                        [(ngModel)]="remember"
+                        type="checkbox"
+                        value="remember"
+                        name="remember"
+                      />
+                      <span class="form-check-label">
+                        Recuerme la próxima vez
+                      </span>
+                    </label>
+                  </div>
+                  <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-lg btn-primary">Iniciar Sesión</button>
+                  </div>
+                  <div style="text-align: center;">o</div>
+                  <button type="button" id="google-sign-in" class="btn-google-sign-in">
+                    <i class="fab fa-google-plus-g"></i>
+                  </button>
+                  <div class="text-center mt-3">
+                    <p>Aún no tienes una cuenta? <a routerLink="/register">Registrate</a></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

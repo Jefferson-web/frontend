@@ -1,0 +1,20 @@
+.btn-google-sign-in{
+    background-color: rgb(223, 49, 49);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    margin: 5px auto;
+    color: white;
+    font-size: 1.5rem;
+    padding: 13px 18px;
+}
+
+.btn-google-sign-in:hover{
+    background-color: rgb(201, 43, 43);
+}
+
+.error-message{
+    color: #dc3545;
+    font-size: .85rem;
+    margin-top: 3px;
+}

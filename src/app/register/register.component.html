@@ -1,0 +1,97 @@
+<main class="d-flex w-100">
+  <div class="container d-flex flex-column">
+    <div class="row vh-100">
+      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+        <div class="d-table-cell align-middle">
+          <div class="text-center mt-4">
+            <h1 class="h2">Empezemos</h1>
+            <p class="lead">
+                Crea una cuenta y disfruta
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="m-sm-4">
+                <form [formGroup]="registerForm" (submit)="createUser();">
+                  <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input
+                      class="form-control form-control-lg is-invalid"
+                      [ngClass]="{'is-invalid': isInvalid('name')}"
+                      type="text"
+                      name="name"
+                      placeholder="Ingresa tu nombre"
+                      formControlName="name"
+                    />
+                    <div *ngIf="isInvalid('name')">
+                      <div *ngIf="registerForm.get('name')?.errors?.required" class="error-message">El nombre es necesario</div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input
+                      class="form-control form-control-lg"
+                      [ngClass]="{'is-invalid': isInvalid('email')}"
+                      type="email"
+                      name="email"
+                      placeholder="Ingresa tu email"
+                      formControlName="email"
+                    />
+                    <div *ngIf="isInvalid('email')">
+                      <div *ngIf="registerForm.get('email')?.errors?.required" class="error-message">El email es necesario</div>
+                      <div *ngIf="registerForm.get('email')?.errors?.email" class="error-message">Ingrese un email valido</div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Contraseña</label>
+                    <input
+                      class="form-control form-control-lg"
+                      [ngClass]="{'is-invalid': isInvalid('password')}"
+                      type="password"
+                      name="password"
+                      placeholder="Ingresa tu contraseña"
+                      formControlName="password"
+                      required
+                    />
+                    <div *ngIf="isInvalid('password')">
+                      <div *ngIf="registerForm.get('password')?.errors?.required" class="error-message">La contraseña es necesaria</div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Repetir Contraseña</label>
+                    <input
+                      class="form-control form-control-lg"
+                      type="password"
+                      name="password2"
+                      placeholder="Repite tu contraseña"
+                      formControlName="password2"
+                    />
+                    <div *ngIf="confirmValidator();" 
+                      class="error-message mt-3">Las contraseñas deben ser iguales</div>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" 
+                      name="condiciones"
+                      type="checkbox"  
+                      id="flexCheckDefault" 
+                      formControlName="condiciones">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Aceptar los términos y condiciones
+                    </label>
+                  </div>
+                  <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-lg btn-primary">Registrar</button>
+                  </div>
+                  <div class="text-center mt-3">
+                    <p>Ya tienes una cuenta? <a routerLink="/login">Login</a></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
